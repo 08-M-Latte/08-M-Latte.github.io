@@ -6,15 +6,15 @@
         "colors": {
             "autoSwitch": {
                 "displayName": "Auto",
-                "light": "light",
-                "dark": "dark",
+                "light": "sun",
+                "dark": "moon",
                 "icon": {
                     "icon": "fa-solid fa-circle-half-stroke",
                     "color": "#808080",
                     "background": "linear-gradient(45deg, #eeeeee 50%, #1c1c1c 50%)"
                 }
             },
-            "enable": ["light", "!autoSwitch", "dark"],
+            "enable": ["sun", "!autoSwitch", "moon"],
             "default": "!autoSwitch"
         }
     },
@@ -40,12 +40,13 @@
         "typedContent": ["08ちゃんだよ〜", "萌え萌え〜", "にゃんにゃん〜"]
     },
     "icp": {
+        "enable": ["moegov"],
         "info": {
             "code": {
-                "moegov": "萌ICP备XXXXXXXX号"
+                "moegov": "萌ICP备20260867号"
             },
             "link": {
-                "moegov": "https://icp.gov.moe/?keyword=xxxxxxxx"
+                "moegov": "https://icp.gov.moe/?keyword=20260867"
             }
         }
     }

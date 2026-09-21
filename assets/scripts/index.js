@@ -35,16 +35,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 渲染 Markdown 内容
     renderMarkdown();
 
-    // 加载页首打字标题
-    var typed = new Typed(".page-head > .title", {
-        strings: config.content.pageHead.typedContent,
-        startDelay: 300,
-        backDelay: 1000,
-        typeSpeed: 100,
-        backSpeed: 50,
-        showCursor: true,
-        loop: true,
-    });
+    // 加载页首打字标题（如果 Typed.js 未加载成功，则回退为静态标题）
+    const pageTitleElement = document.querySelector(".page-head > .title");
+    if (window.Typed && pageTitleElement) {
+        new Typed(".page-head > .title", {
+            strings: config.content.pageHead.typedContent,
+            startDelay: 300,
+            backDelay: 1000,
+            typeSpeed: 100,
+            backSpeed: 50,
+            showCursor: true,
+            loop: true,
+        });
+    } else if (pageTitleElement) {
+        pageTitleElement.textContent = config.content.pageHead.typedContent[0] || "Loading...";
+    }
 
     /* 生成社交链接图标 */
 
