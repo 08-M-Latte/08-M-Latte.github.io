@@ -41,22 +41,22 @@
                         <div class="social-icons">Loading...</div>
                     </div>
                     <div class="card-item" id="recommend">
-                        <span class="title"><i class="fa-solid fa-bullhorn"></i>公告</span>
+                        <span class="title"><i class="fa-solid fa-bullhorn"></i>お知らせ</span>
                         <div class="content">
                             <div class="markdown-content" src="./assets/markdown/announcement.md"></div>
                         </div>
                     </div>
                     <div class="card-item" id="hitokoto">
-                        <span class="title"><i class="fa-solid fa-scroll"></i>一言</span>
+                        <span class="title"><i class="fa-solid fa-scroll"></i>名言</span>
                         <div class="content">
-                            <a id="hitokoto-text" href="" target="_blank">Loading...</a>
+                            <a id="hitokoto-text" href="https://ja.wikipedia.org/wiki/%E6%9C%AB%E3%81%9D%E3%81%86%E5%B7%B1%E3%81%9D%E3%81%9E%E6%BD%9C%E3%81%8F" target="_blank">「学び続ける者は、いつか道を拓く」</a>
                         </div>
                     </div>
                     <div class="card-item" id="settings">
-                        <span class="title"><i class="fa-solid fa-sliders"></i>浏览设置</span>
+                        <span class="title"><i class="fa-solid fa-sliders"></i>表示設定</span>
                         <div class="content">
                             <div class="settings-item theme-settings">
-                                <span class="title"><i class="fa-solid fa-shirt"></i>配色方案 · <span x-text="config.content.theme.displayName"></span></span>
+                                <span class="title"><i class="fa-solid fa-shirt"></i>カラーテーマ · <span x-text="config.content.theme.displayName"></span></span>
                                 <div class="themes"></div>
                             </div>
                         </div>
@@ -73,10 +73,10 @@
         <div class="footer">
             <span class="icp-info">Loading...</span>
             <span class="line-break"><i class="fa-solid fa-ellipsis"></i></span>
-            <!-- 球球你别改这里可以嘛呜呜呜 (＞﹏＜) -->
-            <!-- “[Loading...]”的实际内容可以在 config.json 的 masterInfo.info 项中修改哦~ -->
+            <!-- ここは触らないでね…（＞﹏＜） -->
+            <!-- 「[Loading...]」の実際の内容は config.json の masterInfo.info 項目で変更できますよ〜 -->
             <span
-                >本站由 <span class="webmaster-info"><a :href="config.content.masterInfo.website" target="_blank" x-text="config.content.masterInfo.name">[Loading...]</a> 和 </span><a href="https://hic.top" target="_blank">成成0v0</a> 用 <i class="fa-solid fa-heart"></i> 制作</span
+                >当サイトは <span class="webmaster-info"><a :href="config.content.masterInfo.website" target="_blank" x-text="config.content.masterInfo.name">[Loading...]</a> と </span><a href="https://hic.top" target="_blank">成成0v0</a> の手によって <i class="fa-solid fa-heart"></i> を込めて制作されています</span
             >
 
             <span>Powered by <a href="https://github.com/ChengCheng0v0/ACG-Home" target="_blank">ACG-Home</a></span>
@@ -85,24 +85,24 @@
         <iframe id="theme-color-loader-iframe" src="./loaders/theme-color.html"></iframe>
 
         <script>
-            // 隐藏滚动条
+            // スクロールバーを非表示
             document.body.style.overflow = "hidden";
 
-            // 加载动画的最短显示时间
+            // ローディングアニメーションの最短表示時間
             const minimumLoadingTime = 1800;
             const startTime = new Date().getTime();
 
-            // 页面加载完成后计算是否满足最短时间
+            // ページ読み込み完了後に最短時間を満たすかどうかを計算
             window.addEventListener("load", function () {
                 const currentTime = new Date().getTime();
                 const elapsedTime = currentTime - startTime;
 
-                // 如果页面加载时间少于最短显示时间则延迟隐藏加载动画
+                // ページの読み込み時間が最短表示時間未満の場合、ローディングアニメーションの非表示を遅延
                 const delay = Math.max(0, minimumLoadingTime - elapsedTime);
                 setTimeout(() => {
-                    // document.querySelector(".content").style.display = "block"; //显示网站内容
-                    document.getElementById("global-loader-iframe").className = "end"; // 播放结束动画
-                    document.body.style.overflow = "unset"; // 恢复显示滚动条
+                    // document.querySelector(".content").style.display = "block"; //サイトの内容を表示
+                    document.getElementById("global-loader-iframe").className = "end"; // 終了アニメーションを再生
+                    document.body.style.overflow = "unset"; // スクロールバーを再表示
                 }, delay);
             });
         </script>

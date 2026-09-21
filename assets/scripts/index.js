@@ -66,15 +66,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     /* 生成社交链接图标 End */
 
-    // 获取 Hitokoto 一言
-    fetch("https://v1.hitokoto.cn")
-        .then(response => response.json())
-        .then(data => {
-            const hitokoto = document.querySelector("#hitokoto-text");
-            hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`;
-            hitokoto.innerText = data.hitokoto;
-        })
-        .catch(console.error);
+    // 站内静态名言，避免因外部 API 或浏览器扩展拦截导致页面加载异常
+    const hitokoto = document.querySelector("#hitokoto-text");
+    if (hitokoto) {
+        hitokoto.href = "https://ja.wikipedia.org/wiki/%E6%9C%AB%E3%81%9D%E3%81%9E%E5%B7%B1%E3%81%9E%E6%BD%9C%E3%81%8F";
+    }
 
     // 非移动端下自动悬浮左侧区域
     if (!mobileMode) {

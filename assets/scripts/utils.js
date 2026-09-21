@@ -85,14 +85,17 @@ function renderMarkdown() {
 
     // 遍历每个元素，获取其 src 指定的 Markdown 文件并渲染
     markdownElements.forEach(element => {
-        const src = element.getAttribute("src"); // 获取 src 属性
+        const rawSrc = element.getAttribute("src"); // 获取 src 属性
 
-        if (src) {
-            // 使用 fetch 来获取 .md 文件内容
-            fetch(src)
+        if (rawSrc) {
+            const src = new URL(rawSrc, document.baseURI);
+            src.searchParams.set("_cacheBust", String(Date.now()));
+
+            // 使用 fetch 来获取 .md 文件内容，并强制不走缓存，避免 Firefox/代理返回 304
+            fetch(src.href, { cache: "no-store" })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error(`无法获取 Markdown 文件: ${src}`);
+                        throw new Error(`无法获取 Markdown 文件: ${src.href}`);
                     }
                     return response.text();
                 })
@@ -105,7 +108,7 @@ function renderMarkdown() {
                 })
                 .catch(error => {
                     console.error(error);
-                    element.innerHTML = `<span style='color: red;'>加载 Markdown 文件失败: ${src}</span>`;
+                    element.innerHTML = `<span style='color: red;'>加载 Markdown 文件失败: ${rawSrc}</span>`;
                 });
         } else {
             element.innerHTML = "<span style='color: red;'>加载 Markdown 文件失败: 未在 src 属性中指定文件路径</span>";

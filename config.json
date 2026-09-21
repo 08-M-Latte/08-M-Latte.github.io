@@ -1,7 +1,7 @@
 {
-    "title": "我是网站的标题~",
+    "title": "08ちゃんだよ〜",
     "theme": {
-        "theme": "defdark",
+        "theme": "liora",
         "displayName": "ACG-Home",
         "colors": {
             "autoSwitch": {
@@ -19,37 +19,34 @@
         }
     },
     "masterInfo": {
-        "name": "<站长名字>",
-        "avatar": "./assets/images/avatar.png",
+        "name": "08_M_Latte",
+        "avatar": "./assets/images/avatar.jpg",
         "website": "https://hic.top",
         "socialLink": {
             "link": {
-                "bilibili": "https://space.bilibili.com/675279872",
-                "github": "https://github.com/ChengCheng0v0",
-                "email": "javascript:showEmail()"
+                "bilibili": "https://space.bilibili.com/3546950888589717",
+                "github": "https://github.com/08-M-Latte",
+                "twitter": "https://x.com/08_M_Latte"
             },
             "icon": {
                 "bilibili": "fa-brands fa-bilibili",
                 "github": "fa-brands fa-github",
-                "email": "fa-solid fa-envelope"
+                "twitter": "fa-brands fa-twitter"
             },
-            "enable": ["bilibili", "github", "email"]
+            "enable": ["bilibili", "github", "twitter"]
         }
     },
     "pageHead": {
-        "typedContent": ["求知若饥，虚心若愚", "Stay Hungry Stay Foolish"]
+        "typedContent": ["08ちゃんだよ〜", "萌え萌え〜", "にゃんにゃん〜"]
     },
     "icp": {
         "info": {
             "code": {
-                "china": "X-ICP备XXXXXXXXXX号",
                 "moegov": "萌ICP备XXXXXXXX号"
             },
             "link": {
-                "china": "https://beian.miit.gov.cn",
                 "moegov": "https://icp.gov.moe/?keyword=xxxxxxxx"
             }
-        },
-        "enable": ["moegov", "china"]
+        }
     }
 }
