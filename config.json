@@ -14,8 +14,8 @@
                     "background": "linear-gradient(45deg, #eeeeee 50%, #1c1c1c 50%)"
                 }
             },
-            "enable": ["sun", "!autoSwitch", "moon"],
-            "default": "!autoSwitch"
+            "enable": ["sun", "!autoSwitch", "moon", "eight"],
+            "default": "eight"
         }
     },
     "masterInfo": {
