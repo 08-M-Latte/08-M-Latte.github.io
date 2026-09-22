@@ -12,3 +12,5 @@
 
 音楽聴くのすき、げえむ、お絵描き、VRChatプレイヤーです、
 
+### VRChat画像展示:  
+![Just a Photo](../images/VRChat/VRC1.png)

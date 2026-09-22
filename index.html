@@ -7,6 +7,31 @@
         <meta name="description" content="Content Info" />
         <link rel="icon" href="./favicon.ico" />
 
+        <!-- 禁止缓存页面，保证每次进入都获取最新内容 -->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <script>
+            // 每次进入页面自动执行一次等同 Ctrl+F5 的强制刷新
+            (function () {
+                try {
+                    if (sessionStorage.getItem("hard-refresh") === "1") {
+                        // 本次加载就是强制刷新产生的，清除标记避免死循环
+                        sessionStorage.removeItem("hard-refresh");
+                        return;
+                    }
+                    var nav = performance.getEntriesByType("navigation")[0];
+                    if (!nav || nav.type === "navigate") {
+                        sessionStorage.setItem("hard-refresh", "1");
+                        location.reload();
+                    }
+                } catch (e) {
+                    /* 忽略存储不可用等异常 */
+                }
+            })();
+        </script>
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
