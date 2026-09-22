@@ -7,28 +7,63 @@
         <meta name="description" content="Content Info" />
         <link rel="icon" href="./favicon.ico" />
 
-        <!-- キャッシュを禁止し、ページに入るたびに最新コンテンツを取得する -->
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
-
         <script>
-            // ページに入るたびに Ctrl+F5 相当の強制リロードを自動実行
+            // キャッシュは通常どおり使い、更新があれば自動で反映する
+            // 初回読み込み時に ETag / Last-Modified を基準として記録し、それ以降は条件付きリクエストで軽く確認する
             (function () {
-                try {
-                    if (sessionStorage.getItem("hard-refresh") === "1") {
-                        // 今回の読み込みが強制リロードによるものなら、フラグを削除して無限ループを防ぐ
-                        sessionStorage.removeItem("hard-refresh");
-                        return;
+                var STORAGE_KEY = "page-version";
+
+                function getStored() {
+                    try {
+                        return localStorage.getItem(STORAGE_KEY);
+                    } catch (e) {
+                        return null;
                     }
-                    var nav = performance.getEntriesByType("navigation")[0];
-                    if (!nav || nav.type === "navigate") {
-                        sessionStorage.setItem("hard-refresh", "1");
-                        location.reload();
-                    }
-                } catch (e) {
-                    /* ストレージが利用できない例外は無視 */
                 }
+
+                function setStored(value) {
+                    try {
+                        localStorage.setItem(STORAGE_KEY, value);
+                    } catch (e) {
+                        /* ストレージが利用できない例外は無視 */
+                    }
+                }
+
+                function checkForUpdate() {
+                    fetch(location.href, { cache: "no-cache" })
+                        .then(function (res) {
+                            var tag = res.headers.get("etag") || res.headers.get("last-modified");
+                            if (!tag) {
+                                return;
+                            }
+                            var prev = getStored();
+                            if (prev === null) {
+                                // 初回は基準値を記録するだけ
+                                setStored(tag);
+                            } else if (prev !== tag) {
+                                // 更新があれば記録してから再読み込み（reload は条件付きリクエストになる）
+                                setStored(tag);
+                                location.reload();
+                            }
+                        })
+                        .catch(function () {
+                            /* オフライン時などは無視 */
+                        });
+                }
+
+                window.addEventListener("load", function () {
+                    setTimeout(checkForUpdate, 2000);
+                });
+
+                // タブ復帰時にも確認する
+                document.addEventListener("visibilitychange", function () {
+                    if (!document.hidden) {
+                        checkForUpdate();
+                    }
+                });
+
+                // 定期的にも確認する
+                setInterval(checkForUpdate, 60000);
             })();
         </script>
 

@@ -7,7 +7,8 @@ function getWebsiteConfig() {
         init() {
             try {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "./config.json", false); // 同期リクエストを使用
+                // 時間戳を付けて条件付きリクエストにし、更新があれば即座に反映する
+                xhr.open("GET", "./config.json?_t=" + Date.now(), false); // 同期リクエストを使用
                 xhr.send();
 
                 if (xhr.status >= 200 && xhr.status < 300) {
@@ -89,10 +90,9 @@ function renderMarkdown() {
 
         if (rawSrc) {
             const src = new URL(rawSrc, document.baseURI);
-            src.searchParams.set("_cacheBust", String(Date.now()));
 
-            // fetch で .md ファイルを取得し、キャッシュを無効化して Firefox / プロキシが 304 を返すのを防ぐ
-            fetch(src.href, { cache: "no-store" })
+            // キャッシュを使いつつ条件付きリクエストで取得し、更新があれば即座に反映する
+            fetch(src.href, { cache: "no-cache" })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Markdown ファイルを取得できません: ${src.href}`);
