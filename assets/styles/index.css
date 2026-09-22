@@ -1,4 +1,4 @@
-/* - 全局样式 */
+/* - グローバルスタイル */
 @font-face {
     font-family: "Linotte";
     src: url("../fonts/Linotte\ Regular.otf") format("opentype");
@@ -38,35 +38,35 @@ body {
     font-family: "Zen Maru Gothic", Linotte, HYZhengYuan, sans-serif;
     font-weight: 700;
 }
-/* - 全局样式 End */
+/* - グローバルスタイル End */
 
-/* - 页首 */
+/* - ヘッダー */
 .page-head {
     display: flex;
     justify-content: center;
-    /* align-items: center; */ /* [^1] 开这玩意儿实现打字标题居中会导致页面跳动，我也不知道这是为甚么 TAT */
+    /* align-items: center; */ /* [^1] これをオンにすると打ち込みタイトルの中央配置でページが跳ねるようになり、原因が分からない…TAT */
     width: 100%;
     height: 320px;
     background-color: #49b1f5;
     background-image: url(../images/backgrounds/page-head/wallhaven-9delkw.jpg);
     background-size: cover;
-    background-position: center 85%; /* 请根据需要调整图片位置 */
+    background-position: center 85%; /* 必要に応じて画像位置を調整 */
     /* background-attachment: fixed; */
 }
 
 .page-head > .title,
 .page-head > .typed-cursor {
     height: max-content;
-    margin-top: 160px; /* [^1] 所以此处使用上边距实现居中，反正能跑就行（ */
+    margin-top: 160px; /* [^1] ここでは上余白で中央寄せを実現している。とにかく動いているから…（ */
     font-family: "Zen Maru Gothic", Linotte, HYZhengYuan, sans-serif;
     font-size: 32px;
     font-weight: 700;
     color: #ffffff;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
 }
-/* - 页首 End */
+/* - ヘッダー End */
 
-/* - 主体容器 */
+/* - メインコンテナ */
 .primary-container {
     display: flex;
     justify-content: center;
@@ -75,7 +75,7 @@ body {
     /* background-color: brown; */
 }
 
-/* 左侧区域 */
+/* 左側エリア */
 .primary-container > .left-area {
     max-width: 350px;
     width: 30%;
@@ -84,14 +84,14 @@ body {
     transition: margin-top, ease-in, 0.2s;
 }
 
-/* 右侧区域 */
+/* 右側エリア */
 .primary-container > .right-area {
     max-width: 1050px;
     width: 70%;
 }
-/* - 主体容器 End */
+/* - メインコンテナ End */
 
-/* 内容版块 */
+/* コンテンツブロック */
 .primary-container > .right-area > .content-page {
     position: relative;
     width: 100%;
@@ -108,7 +108,7 @@ body {
     }
 }
 
-/* - 左侧卡片 */
+/* - 左側カード */
 .primary-container > .left-area > .cards > .card-item {
     width: 100%;
     margin-top: 16px;
@@ -120,7 +120,7 @@ body {
     font-size: 14px;
 }
 
-/* 标题 */
+/* 見出し */
 .primary-container > .left-area > .cards > .card-item > .title {
     display: inline-block;
     margin-bottom: 8px;
@@ -132,7 +132,7 @@ body {
     }
 }
 
-/* - 个人信息 */
+/* - 自己紹介 */
 .primary-container > .left-area > .cards > .card-item#personal-info {
     display: flex;
     flex-direction: column;
@@ -164,14 +164,14 @@ body {
 .primary-container > .left-area > .cards > .card-item#personal-info > .social-icons a + a {
     margin-left: 14px;
 }
-/* - 个人信息 End */
+/* - 自己紹介 End */
 
 /* 一言 */
 .primary-container > .left-area > .cards > .card-item#hitokoto > .content a#hitokoto-text {
     color: unset;
 }
 
-/* - 浏览设置 */
+/* - 表示設定 */
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item {
     margin-top: 8px;
     padding: 6px 10px;
@@ -180,7 +180,7 @@ body {
     background-color: #c0e5ff;
 }
 
-/* 标题 */
+/* 見出し */
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item > .title {
     display: inline-block;
     margin-bottom: 8px;
@@ -192,7 +192,7 @@ body {
     }
 }
 
-/* - 主题设置 */
+/* - テーマ設定 */
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item > .themes {
     display: flex;
     justify-content: center;
@@ -225,12 +225,12 @@ body {
     /* border: 2px solid #e87a90; */
     box-shadow: 0px 0px 2px 2px #2a92d8;
 }
-/* - 主题设置 End */
-/* - 浏览设置 End */
+/* - テーマ設定 End */
+/* - 表示設定 End */
 
-/* - 左侧卡片 End */
+/* - 左側カード End */
 
-/* - 页脚 */
+/* - フッター */
 .footer {
     display: flex;
     flex-direction: column;
@@ -258,4 +258,4 @@ body {
 .footer .icp-link {
     color: #4c4948;
 }
-/* - 页脚 End */
+/* - フッター End */

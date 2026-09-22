@@ -1,14 +1,14 @@
-console.log("%c[I]%c " + `Liora 主题的基本脚本 index.js 加载成功!`, "background-color: #00896c;", "");
+console.log("%c[I]%c " + `Liora テーマの基本スクリプト index.js が正常に読み込まれました!`, "background-color: #00896c;", "");
 
 var flag = autoInitObject();
 var eventListener = autoInitObject();
 
-// 获取 DOM 元素
+// DOM 要素を取得
 var element = {
     pageHead: document.querySelector(".page-head"),
 };
 
-// 页首点击展开效果
+// ヘッダークリック時の展開効果
 flag.pageHead.click = true;
 eventListener.pageHead.click = () => {
     if (flag.pageHead.click) {

@@ -1,4 +1,4 @@
-/* - 滚动条 */
+/* - スクロールバー */
 body::-webkit-scrollbar {
     width: 4px;
 }
@@ -21,9 +21,9 @@ body::-webkit-scrollbar-thumb:active {
     background: #e0b15e;
     border-radius: 4px;
 }
-/* - 滚动条 End */
+/* - スクロールバー End */
 
-/* 文本选中 */
+/* テキスト選択 */
 ::selection {
     text-decoration: unset;
     text-decoration-color: unset;
@@ -31,7 +31,7 @@ body::-webkit-scrollbar-thumb:active {
     background-color: var(--color-text-selection);
 }
 
-/* - 分割线 */
+/* - 区切り線 */
 hr {
     border: 2px dashed var(--color-divide);
 }
@@ -39,9 +39,9 @@ hr {
 hr:before {
     color: var(--color-accent);
 }
-/* - 分割线 End */
+/* - 区切り線 End */
 
-/* - 标题 */
+/* - 見出し */
 h1,
 h2,
 h3,
@@ -51,7 +51,7 @@ h6 {
     color: var(--color-key);
 }
 
-/* - 超链接 */
+/* - ハイパーリンク */
 a {
     color: var(--color-accent);
     background: linear-gradient(to right, var(--color-text-selection), var(--color-text-selection)) no-repeat right bottom;
@@ -61,9 +61,9 @@ a {
 .right-area a:hover {
     color: var(--color-accent);
 }
-/* - 超链接 End */
+/* - ハイパーリンク End */
 
-/* 行内代码 */
+/* インラインコード */
 code {
     font-family: inherit;
     padding: 1px 5px 1px 5px;
@@ -71,7 +71,7 @@ code {
     background-color: var(--color-outline);
 }
 
-/* 代码块 */
+/* コードブロック */
 pre {
     font-family: inherit;
     padding: 10px 14px;

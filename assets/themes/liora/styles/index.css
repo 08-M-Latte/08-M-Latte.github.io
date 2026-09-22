@@ -1,10 +1,10 @@
-/* 全局样式 */
+/* グローバルスタイル */
 body {
     background-color: var(--color-mantle);
     color: var(--color-text);
 }
 
-/* - 页首 */
+/* - ヘッダー */
 .page-head {
     background-color: var(--color-mantle);
     background-image: url(../assets/images/page-head/VRChat_2024-11-24_13-43-38.773_1920x1080.png);
@@ -30,25 +30,25 @@ body {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 }
-/* - 页首 End */
+/* - ヘッダー End */
 
-/* 内容版块 */
+/* コンテンツブロック */
 .primary-container > .right-area > .content-page {
     background-color: var(--color-base);
 }
 
-/* - 左侧卡片 */
+/* - 左側カード */
 .primary-container > .left-area > .cards > .card-item {
     background-color: var(--color-base);
 }
 
-/* 个人信息 */
+/* 自己紹介 */
 .primary-container > .left-area > .cards > .card-item#personal-info > .social-icons i {
     background-color: var(--color-accent);
     color: var(--color-accent-fg);
 }
 
-/* - 浏览设置 */
+/* - 表示設定 */
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item {
     padding: 8px 10px;
     background-color: var(--color-dent);
@@ -56,16 +56,16 @@ body {
     color: unset;
 }
 
-/* 主题设置 */
+/* テーマ設定 */
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item > .themes > .theme-item.enable {
     box-shadow: unset;
     border: 1px solid var(--color-divide);
 }
-/* - 浏览设置 End */
+/* - 表示設定 End */
 
-/* - 左侧卡片 End */
+/* - 左側カード End */
 
-/* - 页脚 */
+/* - フッター */
 .footer {
     background-color: var(--color-crust);
 }
@@ -77,4 +77,4 @@ body {
 .footer .icp-link {
     color: var(--color-text);
 }
-/* - 页脚 End */
+/* - フッター End */

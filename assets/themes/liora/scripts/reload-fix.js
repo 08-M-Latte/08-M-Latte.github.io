@@ -1,36 +1,36 @@
-console.log("%c[I]%c " + `Liora 主题的基本脚本 reload-fix.js 加载成功!`, "background-color: #00896c;", "");
+console.log("%c[I]%c " + `Liora テーマの基本スクリプト reload-fix.js が正常に読み込まれました!`, "background-color: #00896c;", "");
 
 if (!reloadFlag) {
-    console.warn("%c[W]%c " + `干净的运行环境: reloadFlag 标记的值为 false 或未定义，这似乎是第一次加载?`, "background-color: #e98b2a;", "");
+    console.warn("%c[W]%c " + `クリーンな実行環境: reloadFlag の値が false または未定義です。これは初回読み込みの可能性が高いです`, "background-color: #e98b2a;", "");
 
-    // 在初次加载时定义需要移除的事件监听器列表
+    // 初回読み込み時に、削除が必要なイベントリスナー一覧を定義
     window.reloadFix = {
         eventListeners: [{ elementPath: "element.pageHead", event: "click", handlerPath: "eventListener.pageHead.click" }],
     };
 } else {
-    // 移除事件监听器
+    // イベントリスナーを削除
     window.reloadFix.eventListeners.forEach(({ elementPath, event, handlerPath }) => {
-        // 根据路径字符串安全地获取对象引用的辅助函数
+        // パス文字列から安全にオブジェクト参照を取得する補助関数
         function getObjectByPath(path) {
             return path.split(".").reduce((obj, key) => obj?.[key], window);
         }
 
-        const element = getObjectByPath(elementPath); // 动态获取 element 的引用
-        const eventHandler = getObjectByPath(handlerPath); // 动态获取 handler 的引用
+        const element = getObjectByPath(elementPath); // element 参照を動的に取得
+        const eventHandler = getObjectByPath(handlerPath); // handler 参照を動的に取得
 
         if (!element) {
-            console.warn("%c[W]%c " + `在试图移除元素 ${elementPath} 的事件监听器 \`${event}, ${eventHandler}\` 时发现元素对象 ${elementPath} 为空或未定义，将跳过对此(可能不存在的)监听器的移除`, "background-color: #e98b2a;", "");
+            console.warn("%c[W]%c " + `要素 ${elementPath} のイベントリスナーを削除しようとした際、要素オブジェクト ${elementPath} が空または未定義であることが判明したため、この（存在しない可能性のある）リスナーの削除をスキップします`, "background-color: #e98b2a;", "");
             return;
         }
         if (!eventHandler) {
-            console.warn("%c[W]%c " + `在试图移除元素 ${elementPath} 的事件监听器 \`${event}, ${eventHandler}\` 时发现 Handler 对象 ${handlerPath} 为空或未定义，将跳过对此(可能不存在的)监听器的移除`, "background-color: #e98b2a;", "");
+            console.warn("%c[W]%c " + `要素 ${elementPath} のイベントリスナーを削除しようとした際、Handler オブジェクト ${handlerPath} が空または未定義であることが判明したため、この（存在しない可能性のある）リスナーの削除をスキップします`, "background-color: #e98b2a;", "");
             return;
         }
         element.removeEventListener(event, eventHandler);
-        console.log("%c[I]%c " + `已移除元素 ${elementPath} 的事件监听器 \`${event}, ${eventHandler}\``, "background-color: #00896c;", "");
+        console.log("%c[I]%c " + `要素 ${elementPath} のイベントリスナー \`${event}, ${eventHandler}\` を削除しました`, "background-color: #00896c;", "");
     });
 }
 
-// 留下标记
+// フラグを残す
 var reloadFlag = true;
 console.log("%c[I]%c " + `reloadFlag = true`, "background-color: #00896c;", "");

@@ -1,45 +1,45 @@
 /* global swal, markdownit */
 
-// 获取网站配置
+// サイト設定を取得
 function getWebsiteConfig() {
     return {
         content: {},
         init() {
             try {
                 const xhr = new XMLHttpRequest();
-                xhr.open("GET", "./config.json", false); // 使用同步请求
+                xhr.open("GET", "./config.json", false); // 同期リクエストを使用
                 xhr.send();
 
                 if (xhr.status >= 200 && xhr.status < 300) {
-                    this.content = JSON.parse(xhr.responseText); // 动态更新 config 对象
+                    this.content = JSON.parse(xhr.responseText); // config オブジェクトを動的に更新
                 } else {
-                    throw new Error("无法获取网站配置文件");
+                    throw new Error("サイト設定ファイルを取得できません");
                 }
             } catch (error) {
-                console.error("无法获取网站配置文件: ", error);
+                console.error("サイト設定ファイルを取得できません: ", error);
             }
         },
     };
 }
 
-// 获取网站配置
+// サイト設定を取得
 const config = getWebsiteConfig();
 config.init();
 
-// 对象递归初始化代理
+// オブジェクトの再帰的初期化プロキシ
 function autoInitObject() {
     return new Proxy(
         {},
         {
             get(target, prop) {
-                // 如果属性不存在，则递归返回一个新的代理
+                // プロパティが存在しない場合、再帰的に新しいプロキシを返す
                 if (!(prop in target)) {
                     target[prop] = autoInitObject();
                 }
                 return target[prop];
             },
             set(target, prop, value) {
-                // 正常设置属性
+                // 通常どおり設定
                 target[prop] = value;
                 return true;
             },
@@ -47,74 +47,74 @@ function autoInitObject() {
     );
 }
 
-// 节流函数
-// NOTE: 节流的作用是：无论事件触发频率多高，目标函数都只会在指定时间间隔内执行一次。
+// スロットル関数
+// NOTE: スロットルの役割は、イベント発火頻度がどれだけ高くても、指定した時間間隔ごとに関数が1回だけ実行されるようにすることです。
 function throttle(func, interval) {
     let lastTime = 0;
     return function (...args) {
-        const now = Date.now(); // 当前时间
+        const now = Date.now(); // 現在時刻
         if (now - lastTime >= interval) {
-            func.apply(this, args); // 如果距离上次执行的时间超过间隔，执行函数
-            lastTime = now; // 更新上次执行时间
+            func.apply(this, args); // 前回実行時刻から間隔を超えていれば関数を実行
+            lastTime = now; // 前回実行時刻を更新
         }
     };
 }
 
-// 防抖函数
-// NOTE: 防抖的作用是：在事件触发后的 delay 时间内没有再次触发时，才会执行目标函数。
+// デバウンス関数
+// NOTE: デバウンスの役割は、イベント発火後に delay 以内に再発火がなければ、対象の関数を実行することです。
 function debounce(func, delay) {
     let timer;
     return function (...args) {
         const context = this;
-        clearTimeout(timer); // 每次触发事件都清除之前的定时器
+        clearTimeout(timer); // イベント発火ごとに前のタイマーを削除
         timer = setTimeout(() => {
-            func.apply(context, args); // 重新设定定时器并调用函数
+            func.apply(context, args); // タイマーを再設定して関数を呼び出す
         }, delay);
     };
 }
 
-// 初始化 markdown-it 实例
+// markdown-it インスタンスを初期化
 const md = new markdownit({
-    html: true, // 允许 HTML 标签
+    html: true, // HTML タグを許可
 });
 
-// Markdown 渲染器
+// Markdown レンダラー
 function renderMarkdown() {
-    // 获取页面中的所有 .markdown-content 元素
+    // ページ内の全 .markdown-content 要素を取得
     const markdownElements = document.querySelectorAll(".markdown-content");
 
-    // 遍历每个元素，获取其 src 指定的 Markdown 文件并渲染
+    // 各要素を走査し、src に指定された Markdown ファイルを取得してレンダリングする
     markdownElements.forEach(element => {
-        const rawSrc = element.getAttribute("src"); // 获取 src 属性
+        const rawSrc = element.getAttribute("src"); // src 属性を取得
 
         if (rawSrc) {
             const src = new URL(rawSrc, document.baseURI);
             src.searchParams.set("_cacheBust", String(Date.now()));
 
-            // 使用 fetch 来获取 .md 文件内容，并强制不走缓存，避免 Firefox/代理返回 304
+            // fetch で .md ファイルを取得し、キャッシュを無効化して Firefox / プロキシが 304 を返すのを防ぐ
             fetch(src.href, { cache: "no-store" })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error(`无法获取 Markdown 文件: ${src.href}`);
+                        throw new Error(`Markdown ファイルを取得できません: ${src.href}`);
                     }
                     return response.text();
                 })
                 .then(markdownContent => {
-                    // 使用 markdown-it 库将 Markdown 转换为 HTML
+                    // markdown-it で Markdown を HTML に変換
                     const renderedHTML = md.render(markdownContent);
 
-                    // 使用渲染后的 HTML 直接替换原始内容
+                    // レンダリング済みの HTML で元の内容を置き換える
                     element.innerHTML = renderedHTML;
                 })
                 .catch(error => {
                     console.error(error);
-                    element.innerHTML = `<span style='color: red;'>加载 Markdown 文件失败: ${rawSrc}</span>`;
+                    element.innerHTML = `<span style='color: red;'>Markdown ファイルの読み込みに失敗しました: ${rawSrc}</span>`;
                 });
         } else {
-            element.innerHTML = "<span style='color: red;'>加载 Markdown 文件失败: 未在 src 属性中指定文件路径</span>";
+            element.innerHTML = "<span style='color: red;'>Markdown ファイルの読み込みに失敗しました: src 属性にファイルパスが指定されていません</span>";
         }
     });
 }
 
-// 将方法挂载到全局对象 window
+// メソッドを window グローバルオブジェクトへマウント
 window.autoInitObject = autoInitObject;

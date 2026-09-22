@@ -7,17 +7,17 @@
         <meta name="description" content="Content Info" />
         <link rel="icon" href="./favicon.ico" />
 
-        <!-- 禁止缓存页面，保证每次进入都获取最新内容 -->
+        <!-- キャッシュを禁止し、ページに入るたびに最新コンテンツを取得する -->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
 
         <script>
-            // 每次进入页面自动执行一次等同 Ctrl+F5 的强制刷新
+            // ページに入るたびに Ctrl+F5 相当の強制リロードを自動実行
             (function () {
                 try {
                     if (sessionStorage.getItem("hard-refresh") === "1") {
-                        // 本次加载就是强制刷新产生的，清除标记避免死循环
+                        // 今回の読み込みが強制リロードによるものなら、フラグを削除して無限ループを防ぐ
                         sessionStorage.removeItem("hard-refresh");
                         return;
                     }
@@ -27,7 +27,7 @@
                         location.reload();
                     }
                 } catch (e) {
-                    /* 忽略存储不可用等异常 */
+                    /* ストレージが利用できない例外は無視 */
                 }
             })();
         </script>
@@ -121,15 +121,15 @@
             const minimumLoadingTime = 1800;
             const startTime = new Date().getTime();
 
-            // ページ読み込み完了後に最短時間を満たすかどうかを計算
+            // ページ読み込み完了後に、最短表示時間を満たしているかどうかを計算
             window.addEventListener("load", function () {
                 const currentTime = new Date().getTime();
                 const elapsedTime = currentTime - startTime;
 
-                // ページの読み込み時間が最短表示時間未満の場合、ローディングアニメーションの非表示を遅延
+                // ページの読み込み時間が最短表示時間未満なら、ローディングアニメーションの非表示を遅延
                 const delay = Math.max(0, minimumLoadingTime - elapsedTime);
                 setTimeout(() => {
-                    // document.querySelector(".content").style.display = "block"; //サイトの内容を表示
+                    // document.querySelector(".content").style.display = "block"; // サイトの内容を表示
                     document.getElementById("global-loader-iframe").className = "end"; // 終了アニメーションを再生
                     document.body.style.overflow = "unset"; // スクロールバーを再表示
                 }, delay);
