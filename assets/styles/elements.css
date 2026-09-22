@@ -25,17 +25,38 @@ body::-webkit-scrollbar-thumb:active {
 
 /* - 鼠标指针 */
 * {
-    cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur), auto;
+    cursor: url(../cursors/mafuyu-normal.webp) 0 0, url(../cursors/mafuyu-normal.gif) 0 0, auto;
 }
 
 p,
-span {
-    cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/texto.cur), auto;
+span,
+label,
+input,
+textarea,
+button,
+select,
+code,
+pre {
+    cursor: url(../cursors/mafuyu-text.webp) 0 0, url(../cursors/mafuyu-text.gif) 0 0, text;
 }
 
-a {
+a,
+a:visited,
+a:active,
+button:hover,
+a:hover,
+input:hover,
+select:hover,
+textarea:hover {
     background-color: transparent;
-    cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/ayuda.cur), auto;
+    cursor: url(../cursors/mafuyu-link.webp) 0 0, url(../cursors/mafuyu-link.gif) 0 0, pointer;
+}
+
+*[title],
+[aria-label],
+.help,
+.question {
+    cursor: url(../cursors/mafuyu-help.webp) 0 0, url(../cursors/mafuyu-help.gif) 0 0, help;
 }
 /* - 鼠标指针 End */
 

@@ -35,8 +35,8 @@ body {
     align-items: center;
     background-color: #eeeeee;
     color: #4c4948;
-    font-family: Linotte, HYZhengYuan, sans-serif;
-    font-weight: normal;
+    font-family: "Zen Maru Gothic", Linotte, HYZhengYuan, sans-serif;
+    font-weight: 700;
 }
 /* - 全局样式 End */
 
@@ -58,8 +58,9 @@ body {
 .page-head > .typed-cursor {
     height: max-content;
     margin-top: 160px; /* [^1] 所以此处使用上边距实现居中，反正能跑就行（ */
+    font-family: "Zen Maru Gothic", Linotte, HYZhengYuan, sans-serif;
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 700;
     color: #ffffff;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
 }
@@ -234,7 +235,7 @@ body {
 
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item > .themes > .theme-item,
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item > .themes > .theme-item * {
-    cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/ayuda.cur), pointer;
+    cursor: url(../cursors/mafuyu-help.webp) 0 0, url(../cursors/mafuyu-help.gif) 0 0, pointer;
 }
 
 .primary-container > .left-area > .cards > .card-item > .content > .settings-item > .themes > .theme-item.enable {
