@@ -33,8 +33,20 @@
                     "color": "#c48fad",
                     "background": "#1e1e2e"
                 }
+            },
+            "eight": {
+                "displayName": "08",
+                "files": {
+                    "styles": ["index.css", "colors.css"],
+                    "scripts": []
+                },
+                "icon": {
+                    "icon": "fa-solid fa-circle-dot",
+                    "color": "#9b5de5",
+                    "background": "#0f0f12"
+                }
             }
         },
-        "index": ["sun", "moon"]
+        "index": ["sun", "moon", "eight"]
     }
 }

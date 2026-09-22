@@ -1,0 +1,24 @@
+/* 08 配色 — 黒基調・紫は控えめ
+   面積比: ベース(黒に近い無彩色グレー) 70% / 黒の部品(縁・帯・地面) 20% / 紫(見出し・リンク) 8% / 黄色(名前) 2%
+   ダーク配色の鉄則: 背景は真っ黒(#000)ではなく #121212 前後、鮮やかな色は彩度を落とす、手前の面ほど明るい */
+:root {
+    --color-base: #1c1c20;            /* カード・本文ブロック（背景より一段明るい無彩色） */
+    --color-mantle: #121214;          /* ページ全体の背景（黒に見えるが真っ黒ではない） */
+    --color-crust: #0a0a0c;           /* フッター（真っ黒の地面） */
+    --color-dent: #26262c;            /* 表示設定の内側パネル */
+    --color-text: #d8d8de;            /* 本文の文字（少し落とした白） */
+    --color-text-selection: #4a4a55;  /* 文字を選択したときの背景 */
+    --color-key: #cba6f7;             /* 見出し（紫を使うのはこことリンクだけ） */
+    --color-weak: #8a8a94;            /* 控えめな文字 */
+    --color-divide: #3a3a42;          /* 区切り線（無彩色） */
+    --color-outline: #26262c;         /* インラインコード・コードブロックの背景 */
+    --color-accent: #cba6f7;          /* リンクの文字色 */
+    --color-accent-fg: #0a0a0c;
+    --color-overlay: #3a3a42;
+    --color-positive: #a6e3a1;
+    --color-positive-fg: #0a0a0c;
+    --color-danger: #f38ba8;
+    --color-danger-fg: #0a0a0c;
+    --color-warning: #f9e2af;         /* 黄色（本文の **太字** 強調にだけ使う） */
+    --color-warning-fg: #0a0a0c;
+}

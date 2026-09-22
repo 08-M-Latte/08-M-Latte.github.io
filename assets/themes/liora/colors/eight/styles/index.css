@@ -1,0 +1,85 @@
+/* 08 配色 — 変数だけでは変えられない部分の上書き */
+
+/* ページ背景: 一番奥の面。無彩色の黒に近いグレー。上がわずかに暗く、下（地面側）がわずかに明るい */
+html {
+    background-color: #0a0a0c;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #121214;
+    background-image: linear-gradient(180deg, #0f0f11 0%, #141416 50%, #1a1a1e 100%);
+    background-repeat: no-repeat;
+}
+
+/* ヘッダー: Moon と同じ VRChat の写真。下端は真っ黒の帯（パタポンの地面） */
+.page-head {
+    background-color: #0a0a0c;
+    background-image: url(../../../assets/images/page-head/VRChat_2026-08-28_00-31-24.139_1920x1080.png);
+    background-size: cover;
+    background-position: center 45%;
+    border-bottom: 6px solid #0a0a0c;
+}
+
+/* アバター: 真っ黒の太い輪で囲む（パタポンの目のシルエット） */
+.primary-container > .left-area > .cards > .card-item#personal-info > .avatar {
+    border: 3px solid #0a0a0c;
+    box-sizing: border-box;
+}
+
+/* SNS アイコン: 紫の丸に黒い図柄（黒いカードの上で目立たせる） */
+.primary-container > .left-area > .cards > .card-item#personal-info > .social-icons i {
+    background-color: #cba6f7;
+    color: #0a0a0c;
+}
+
+/* 本文中の強調（Markdown の **太字**）: 黄色。いわゆる「赤文字！！！」の役割はここだけ */
+.markdown-content strong,
+.markdown-content b {
+    color: #f9e2af;
+}
+
+/* カードと本文ブロック: 背景より明るい面で手前に出し、真っ黒の太い縁で切り抜く
+   （ヘッドクォーター画面のパネルの黒縁。影は使わず、明るさの差と黒線で奥行きを出す） */
+.primary-container > .left-area > .cards > .card-item,
+.primary-container > .right-area > .content-page {
+    border: 2px solid #0a0a0c;
+    box-shadow: none;
+}
+
+/* 左カードの見出し（お知らせ・名言・表示設定）: 黒い帯に白っぽい文字（HEADQUARTERS の帯） */
+.primary-container > .left-area > .cards > .card-item > .title {
+    padding: 3px 12px;
+    border-radius: 6px;
+    background-color: #0a0a0c;
+    color: #d8d8de;
+}
+
+/* 表示設定の内側パネル: 黒縁 */
+.primary-container > .left-area > .cards > .card-item > .content > .settings-item {
+    box-shadow: none;
+    border: 2px solid #0a0a0c;
+}
+
+/* 選択中のテーマボタン: 白っぽい線で囲む */
+.primary-container > .left-area > .cards > .card-item > .content > .settings-item > .themes > .theme-item.enable {
+    border: 2px solid #d8d8de;
+    box-shadow: none;
+}
+
+/* 区切り線（--- で入る線）: 黒の点線 */
+hr {
+    border: 2px dashed #0a0a0c;
+}
+
+/* フッター: 真っ黒の地面。上端は真っ平 */
+.footer {
+    box-shadow: none;
+}
+
+/* スクロールバー（Liora 本体で金色に直書きされているので上書き） */
+body::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:active {
+    background: #3a3a42;
+}
