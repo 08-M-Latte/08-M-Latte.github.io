@@ -37,11 +37,6 @@ body {
     background-color: var(--color-base);
 }
 
-/* 内容板块的贴纸 */
-.primary-container > .right-area > .content-page::before {
-    background-color: var(--color-overlay);
-}
-
 /* - 左侧卡片 */
 .primary-container > .left-area > .cards > .card-item {
     background-color: var(--color-base);
