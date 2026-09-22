@@ -33,12 +33,6 @@ body {
     color: #0a0a0c;
 }
 
-/* 本文中の強調（Markdown の **太字**）: 黄色。いわゆる「赤文字！！！」の役割はここだけ */
-.markdown-content strong,
-.markdown-content b {
-    color: #f9e2af;
-}
-
 /* カードと本文ブロック: 背景より明るい面で手前に出し、真っ黒の太い縁で切り抜く
    （ヘッドクォーター画面のパネルの黒縁。影は使わず、明るさの差と黒線で奥行きを出す） */
 .primary-container > .left-area > .cards > .card-item,
@@ -47,11 +41,8 @@ body {
     box-shadow: none;
 }
 
-/* 左カードの見出し（お知らせ・名言・表示設定）: 黒い帯に白っぽい文字（HEADQUARTERS の帯） */
+/* 左カードの見出し（お知らせ・名言・表示設定）: 帯は付けず、文字だけ */
 .primary-container > .left-area > .cards > .card-item > .title {
-    padding: 3px 12px;
-    border-radius: 6px;
-    background-color: #0a0a0c;
     color: #d8d8de;
 }
 
